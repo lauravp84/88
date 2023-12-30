@@ -7,10 +7,7 @@ var mouseEvent = "empty";
     widthOfLine = 2;
 
     /*Retire a linha de comentário errada*/
-    //canvas.addEventListener("mousedown", my_mousedown);
-    
     canvas.addEventListener("mousedown", my_mousedown);
-
     function my_mousedown(e)
     {
         color = document.getElementById("color").value;
@@ -23,13 +20,12 @@ var mouseEvent = "empty";
     Crie um event listener para "mousemove"
     e chame a função my_mousemove
     */
-
+    canvas.addEventListener("mousemove", my_mousemove);
     function my_mousemove(e)
     {
         /*Retire a linha de comentário errada*/
-        //currentPositionOfMouseX = e.clientX - canvas.offsetLeft;
-        //currentPositionOfMouseX = e.clientX - canvas.offsetRight;
-        //currentPositionOfMouseX = e.clientX - canvas.offsetBottom;
+        currentPositionOfMouseX = e.clientX - canvas.offsetLeft;
+        currentPositionOfMouseY = e.clientY - canvas.offsetTop;
 
         /*
         crie currentPositionOfMouseY and
@@ -45,17 +41,20 @@ var mouseEvent = "empty";
         ctx.arc(currentPositionOfMouseX, currentPositionOfMouseY, radius ,0 , 2 * Math.PI);
         ctx.stroke();
         }
+        canvas.addEventListener("mouseup", my_mouseup);
+        function my_mouseup(e)
+        {
+            mouseEvent = "mouseUP";
+        }
+        canvas.addEventListener("mouseleave", my_mouseleave);
+        function my_mouseleave(e)
+        {
+            mouseEvent = "mouseleave";
+        }
 
     }
 
-    /*Crie um event listener para "mouseup"
-    e chame a função my_mouseup
-
-    Crie uma função chamada my_mouseup com o evento como parâmetro.
     
-    Atribua "mouseUP" ao mouseEvent
-    dentro da função
-    */
     
     /*Crie uma event listener para "mouseleave"
     e chame a função my_mouseleave
